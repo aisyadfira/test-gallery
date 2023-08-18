@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <div id="image-gallery"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+Create JavaScript File:
+
+Create a JavaScript file (e.g., script.js) in the same directory as your HTML file.
+
+Fetch and Display Images:
+
+In your script.js file, you can use JavaScript to fetch the image URLs from your API and dynamically generate <img> elements to display the images in the image-gallery div.
+
+javascript
+Copy code
+const imageGallery = document.getElementById("image-gallery");
+
+// Fetch images from the API
+fetch("http://localhost:3000/images")
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      const images = data.images;
+
+      // Create <img> elements and append to the image gallery
+      images.forEach(imageUrl => {
+        const imgElement = document.createElement("img");
+        imgElement.src = imageUrl;
+        imgElement.alt = "Uploaded Image";
+        imageGallery.appendChild(imgElement);
+      });
+    } else {
+      console.error("Error fetching images:", data.message);
+    }
+  })
+  .catch(error => {
+    console.error("Fetch error:", error);
+  });
+Run Your HTML Page:
+
+Open your index.html file in a web browser. The JavaScript code will fetch the image URLs from your API and dynamically populate the image-gallery div with <img> elements displaying the images.
+
+Remember to adjust the URL in the fetch function to match the URL of your running Node.js server. This example assumes the server is running on http://localhost:3000. If your server is running on a different URL or port, make sure to update the fetch URL accordingly.
+
+
+
+
+
