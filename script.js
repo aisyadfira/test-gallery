@@ -1,7 +1,7 @@
 const imageGallery = document.getElementById("image-gallery");
 
 // Fetch images from the API
-fetch("http://localhost:3000/images")
+fetch("http://ec2-13-239-136-78.ap-southeast-2.compute.amazonaws.com:3000/images")
   .then(response => response.json())
   .then(data => {
     if (data.success) {
